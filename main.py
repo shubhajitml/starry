@@ -17,9 +17,6 @@ import logging
 from sanic import Sanic
 from sanic.response import json as jsn
 from sanic_redis import SanicRedis
-import uvloop
-import asyncio
-
 
 logging.basicConfig(filename="starry.log", level=logging.INFO,\
     format="%(asctime)s:%(levelname)s:%(message)s")
@@ -59,9 +56,9 @@ class GitHub(object):
         return result_list, len(repos_list)
 
 #  API Server
-app = Sanic(__name__)
+app = Sanic()
 
-app.config.update( { 'REDIS': { 'address': ('127.0.0.1', 6379)} } )
+app.config.update( { 'REDIS': { 'address': ('localhost', int(os.environ.get('REDIS_PORT', 6379)))} } )
 redis = SanicRedis(app)
 
 @app.route("/repos", methods=["POST",])
@@ -87,15 +84,5 @@ async def repos(request):
             return jsn({"results":results})
     
 if __name__ == "__main__":
-    asyncio.set_event_loop(uvloop.new_event_loop())
-    server = app.create_server(host="0.0.0.0", port=8007, return_asyncio_server=True)
-    loop = asyncio.get_event_loop()
-    # loop.set_task_factory(context.task_factory)
-    task = asyncio.ensure_future(server)
-    try:
-        loop.run_forever()
-    except:
-        loop.stop()
-
-    # app.run(host="0.0.0.0", port=os.environ.get('PORT',1337), workers=4)
+    app.run(host='127.0.0.1', port=8080)
     # org_name = ["pytorch", "verloop", "nvidia", "openai", "tensorflow", "huggingface", "google", "facebook", "microsoft", "apache", "boostorg"]    

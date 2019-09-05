@@ -1,5 +1,4 @@
+gunicorn==19.7.1
 requests==2.21.0
 sanic==19.03.1
 sanic-redis==0.1.0
-uvloop==0.12.2
-asyncio
