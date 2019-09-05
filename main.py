@@ -84,5 +84,7 @@ async def repos(request):
             return jsn({"results":results})
     
 if __name__ == "__main__":
+    # This is used when running locally. Gunicorn is used to run the
+    # application on Google App Engine. See entrypoint in app.yaml.
     app.run(host='127.0.0.1', port=8080)
     # org_name = ["pytorch", "verloop", "nvidia", "openai", "tensorflow", "huggingface", "google", "facebook", "microsoft", "apache", "boostorg"]    
