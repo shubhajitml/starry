@@ -2,7 +2,7 @@ import datetime
 import requests
 
 org_name = input("Github Organisation Name: ")
-API_ENDPOINT = "https://web-dep.appspot.com/repos"
+API_ENDPOINT =  "http://9cebaaef.ngrok.io/repos" # "https://web-dep.appspot.com/repos" 
 DATA = '{"org":"'+str(org_name)+'"}'
 # curl --header "Content-Type: application/json" --request POST  --data '{"org": "mozilla"}' https://web-dep.appspot.com/repos 
  
