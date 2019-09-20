@@ -24,8 +24,6 @@ logging.basicConfig(filename="starry.log", level=logging.INFO,\
 class GitHub(object):
     """Operations on github repos using github's REST API v3"""
     def __init__(self, org_name):
-        # generate the api token from https://github.com/settings/tokens
-        self.GITHUB_TOKEN = "fb882ebb789863a2b6a6766d38421ec8ba9b5ff0"
         # github url of the org
         self.ORG_URL = f"https://api.github.com/orgs/{org_name}/repos?type=sources&per_page=100&page=1"
 
@@ -40,11 +38,11 @@ class GitHub(object):
             - result_list (list) : list containing top-3 repo name and number of stars
             - int : an integer containing the length of the repos_list
         """
-        res=requests.get(self.ORG_URL,headers={"Authorization": self.GITHUB_TOKEN})
+        res=requests.get(self.ORG_URL,headers={"Authorization": GITHUB_TOKEN})
         repos_list=res.json()
         # results for all pages (as github provides 100 pages at max)    
         while 'next' in res.links.keys():
-            res=requests.get(res.links['next']['url'],headers={"Authorization": self.GITHUB_TOKEN})
+            res=requests.get(res.links['next']['url'],headers={"Authorization": GITHUB_TOKEN})
             repos_list.extend(res.json())
         
         # sort the repo by stars and return top-3 results in desired format
@@ -87,4 +85,4 @@ if __name__ == "__main__":
     # gunicorn is used to run the application on GAE (see entrypoint in app.yaml)
     # This is used when running locally. 
     app.run(host='127.0.0.1', port=8080)
-    # org_name = ["pytorch", "verloop", "nvidia", "openai", "tensorflow", "huggingface", "google", "facebook", "microsoft", "apache", "boostorg"]    
+    # org_name = ["pytorch", "nvidia", "openai", "tensorflow", "huggingface", "google", "facebook", "microsoft", "apache", "boostorg"]    
