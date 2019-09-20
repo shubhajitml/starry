@@ -2,7 +2,7 @@
 Finding the most starred repos of an organisation
 
 ### 1. Test
-make POST requests to https://web-dep.appspot.com/repos with data as the specifed format `{"org": "verloop"}`
+make POST requests to https://starry.appspot.com/repos with data as the specifed format `{"org": "google"}`
 
 ```
 curl --header "Content-Type: application/json" --request POST \
