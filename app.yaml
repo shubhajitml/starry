@@ -14,3 +14,6 @@ resources:
 automatic_scaling:
   min_num_instances: 2
   max_num_instances: 4
+  
+env_variables:
+  GITHUB_TOKEN = "fb882ebb789863a2b6a6766d38421ec8ba9b5ff0"  
