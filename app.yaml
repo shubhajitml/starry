@@ -16,4 +16,5 @@ automatic_scaling:
   max_num_instances: 4
   
 env_variables:
+# generate the api token from https://github.com/settings/tokens
   GITHUB_TOKEN = "fb882ebb789863a2b6a6766d38421ec8ba9b5ff0"  
