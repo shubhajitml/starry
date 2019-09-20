@@ -1,7 +1,7 @@
 # starry
 Finding the most starred repos of an organisation
 
-#### 0. To run locally
+#### 0. Run locally
 
 ```console
 python3 main.py
