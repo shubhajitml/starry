@@ -21,6 +21,7 @@ from sanic_redis import SanicRedis
 logging.basicConfig(filename="starry.log", level=logging.INFO,\
     format="%(asctime)s:%(levelname)s:%(message)s")
 
+GITHUB_TOKEN = "fb882ebb789863a2b6a6766d38421ec8ba9b5ff0"
 class GitHub(object):
     """Operations on github repos using github's REST API v3"""
     def __init__(self, org_name):
