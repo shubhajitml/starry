@@ -49,7 +49,7 @@ class GitHub(object):
         # sort the repo by stars and return top-3 results in desired format
         result_list = []
         repos_list = sorted(repos_list, key=lambda x: x['stargazers_count'], reverse=True)
-        for repo in repos_list[:3]:
+        for repo in repos_list[:5]:
             result_list.append({"name":repo["name"], "stars":repo["stargazers_count"]})
         
         return result_list, len(repos_list)
