@@ -1,4 +1,4 @@
 gunicorn==19.7.1
 requests==2.21.0
-sanic==19.03.1
+sanic==20.12.7
 sanic-redis==0.1.0
